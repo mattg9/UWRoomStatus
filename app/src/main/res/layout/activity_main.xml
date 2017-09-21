@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="app.band.runawaynation.matth.uwroomstatus.MainActivity"
+    tools:layout_editor_absoluteY="81dp"
+    tools:layout_editor_absoluteX="0dp">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/buildingTextView"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginStart="30dp"
+                android:layout_marginLeft="30dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0.03"
+                android:text="@string/Building"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/buildingEditText"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <EditText
+                android:id="@+id/buildingEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0.03"
+                android:hint="@string/buildingHint"
+                android:inputType="textCapCharacters"
+                android:text="MC"
+                app:layout_constraintLeft_toRightOf="@+id/buildingTextView"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/roomTextView"
+                android:layout_width="match_parent"
+                android:layout_height="24dp"
+                android:layout_marginTop="21dp"
+                android:layout_weight="0.03"
+                android:text="@string/Room"
+                android:textSize="20sp"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/roomEditText"
+                app:layout_constraintTop_toBottomOf="@+id/buildingTextView" />
+
+            <EditText
+                android:id="@+id/roomEditText"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0.03"
+                android:hint="@string/RoomHint"
+                android:inputType="number"
+                android:text="2065"
+                app:layout_constraintLeft_toRightOf="@+id/roomTextView"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/buildingEditText" />
+
+            <TextView
+                android:id="@+id/dayTextView"
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="11dp"
+                android:layout_weight="0.03"
+                android:text="@string/Day"
+                android:textSize="20sp"
+                app:layout_constraintHorizontal_bias="0.975"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toLeftOf="@+id/dayRadioGroup"
+                app:layout_constraintTop_toBottomOf="@+id/roomTextView" />
+
+            <RadioGroup
+                android:id="@+id/dayRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0.03"
+                android:orientation="horizontal"
+                android:weightSum="1.0"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/roomEditText">
+
+                <RadioButton
+                    android:id="@+id/radio_Monday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:checked="true"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/M" />
+
+                <RadioButton
+                    android:id="@+id/radio_Tuesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/T" />
+
+                <RadioButton
+                    android:id="@+id/radio_Wednesday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/W"
+                    tools:layout_editor_absoluteX="188dp"
+                    tools:layout_editor_absoluteY="112dp" />
+
+                <RadioButton
+                    android:id="@+id/radio_Thursday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/Th" />
+
+                <RadioButton
+                    android:id="@+id/radio_Friday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.2"
+                    android:onClick="onRadioButtonClicked"
+                    android:text="@string/F"
+                    tools:layout_editor_absoluteX="265dp"
+                    tools:layout_editor_absoluteY="140dp" />
+
+            </RadioGroup>
+
+            <Button
+                android:id="@+id/submitButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="9dp"
+                android:layout_weight="0.03"
+                android:text="@string/Submit"
+                android:visibility="visible"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/RoomTimePicker" />
+
+            <TextView
+                android:id="@+id/tvOutput"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_weight="0.03"
+                android:padding="20dp"
+                android:text="@string/output"
+                android:textAlignment="center"
+                android:textSize="20sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintLeft_toLeftOf="parent"
+                app:layout_constraintRight_toRightOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/submitButton" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</android.support.constraint.ConstraintLayout>
