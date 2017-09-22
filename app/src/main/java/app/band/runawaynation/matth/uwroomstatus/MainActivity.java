@@ -85,6 +85,7 @@ public class MainActivity extends AppCompatActivity {
 
     // what happens when I click submit button
     private void onSubmitClicked() {
+        output.setText(""); // clear the output log to screen
         building = buildingET.getText().toString();
         room = roomET.getText().toString();
         if (building.isEmpty() || room.isEmpty() || day.isEmpty()) {
@@ -133,13 +134,30 @@ public class MainActivity extends AppCompatActivity {
             for (int i = 0; i < arr.length(); i++) {
                 try {
                     JSONObject json = arr.getJSONObject(i);
-                    printCourse(json.getString("start_time"), json.getString("end_time"), json.getString("title"));
+                    // print only for the given day
+                    if (isSameDay(json.getString("weekdays"))) {
+                        printCourse(json.getString("start_time"), json.getString("end_time")
+                                , json.getString("subject") + " " + json.getString("catalog_number"));
+                    }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+    }
+
+    private boolean isSameDay(String weekdays) {
+        switch(day) {
+            case "M": case "W": case "F":case "Th":
+                return weekdays.contains(day);
+            case "T":
+                int tCount = weekdays.length() - weekdays.replace("T", "").length();
+                // either there is 2 T's - Tuesday!, or T and no H - also Tuesday! otherwise FALSE
+                return tCount == 1 && !weekdays.contains("h") || tCount == 2;
+            default:
+                return false;
         }
     }
 
