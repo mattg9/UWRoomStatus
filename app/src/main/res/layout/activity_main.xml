@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="app.band.runawaynation.matth.uwroomstatus.MainActivity"
-    tools:layout_editor_absoluteY="81dp"
-    tools:layout_editor_absoluteX="0dp">
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
 
     <ScrollView
         android:layout_width="match_parent"
@@ -26,8 +26,8 @@
                 android:id="@+id/buildingTextView"
                 android:layout_width="match_parent"
                 android:layout_height="38dp"
-                android:layout_marginStart="30dp"
                 android:layout_marginLeft="30dp"
+                android:layout_marginStart="30dp"
                 android:layout_marginTop="8dp"
                 android:layout_weight="0.03"
                 android:text="@string/Building"
@@ -44,7 +44,6 @@
                 android:layout_weight="0.03"
                 android:hint="@string/buildingHint"
                 android:inputType="textCapCharacters"
-                android:text="MC"
                 app:layout_constraintLeft_toRightOf="@+id/buildingTextView"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -69,7 +68,6 @@
                 android:layout_weight="0.03"
                 android:hint="@string/RoomHint"
                 android:inputType="number"
-                android:text="2065"
                 app:layout_constraintLeft_toRightOf="@+id/roomTextView"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/buildingEditText" />
@@ -101,14 +99,14 @@
                 android:orientation="horizontal"
                 android:weightSum="1.0"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/roomEditText">
+                app:layout_constraintTop_toBottomOf="@+id/roomEditText"
+                android:layout_marginRight="16dp">
 
                 <RadioButton
                     android:id="@+id/radio_Monday"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.2"
-                    android:checked="true"
                     android:onClick="onRadioButtonClicked"
                     android:text="@string/M" />
 

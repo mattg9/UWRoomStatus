@@ -6,16 +6,12 @@
     <string name="M">M</string>
     <string name="Room">Room</string>
     <string name="RoomHint">room number</string>
-    <string name="RoomStatus">Room Status</string>
     <string name="Submit">Submit</string>
     <string name="T">T</string>
     <string name="Th">Th</string>
-    <string name="Time">Time</string>
     <string name="W">W</string>
-    <string name="action_settings">Settings</string>
     <string name="buildingHint">building abbreviation</string>
-    <string name="hello_world">Hello world!</string>
     <string name="output">Room Status Will Display Here</string>
-    <string name="mytag">MYTAG</string>
+    <string name="invalid_input">Invalid Input</string>
 
 </resources>
