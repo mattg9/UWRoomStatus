@@ -5,12 +5,12 @@
     <string name="F">F</string>
     <string name="M">M</string>
     <string name="Room">Room</string>
-    <string name="RoomHint">room number</string>
+    <string name="RoomHint">number</string>
     <string name="Submit">Submit</string>
     <string name="T">T</string>
     <string name="Th">Th</string>
     <string name="W">W</string>
-    <string name="buildingHint">building abbreviation</string>
+    <string name="buildingHint">name</string>
     <string name="output">Room Status Will Display Here</string>
     <string name="invalid_input">Invalid Input</string>
 

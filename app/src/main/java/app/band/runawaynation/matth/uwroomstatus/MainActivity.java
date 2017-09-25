@@ -2,6 +2,7 @@ package app.band.runawaynation.matth.uwroomstatus;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -36,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private String room;
     private EditText buildingET, roomET;
     private TextView output;
+    private String courses[];
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -89,7 +91,7 @@ public class MainActivity extends AppCompatActivity {
         building = buildingET.getText().toString();
         room = roomET.getText().toString();
         if (building.isEmpty() || room.isEmpty() || day.isEmpty()) {
-            output.setText(R.string.invalid_input);
+            Toast.makeText(this, R.string.invalid_input, Toast.LENGTH_LONG).show();
             return;
         }
         // set the url of REST GET request
@@ -100,9 +102,8 @@ public class MainActivity extends AppCompatActivity {
             Intent intent = new Intent(this, MyService.class);
             intent.setData(Uri.parse(URL));
             startService(intent);
-            Toast.makeText(this, "Done", Toast.LENGTH_LONG);
         } else {
-            Toast.makeText(this, "Network not available!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Network not available!", Toast.LENGTH_LONG).show();
         }
     }
     
@@ -120,32 +121,47 @@ public class MainActivity extends AppCompatActivity {
     private void printCourse(String startTime, String endTime, String courseName) {
         output.append(courseName + " " + startTime + "-" + endTime + "\n");
     }
-   
+
     private void processCourseData(String response) {
-        // remove metadata
-        int x = 0;
-        while (x < 200 && response.length() > x) { response = response.substring(1); x++;
-            if (response.substring(0, 1).equals("[")) break; }
         JSONArray arr;
-        // go after every course
+        JSONObject jsonMeta, jsonData;
         try {
-            arr = new JSONArray(response);
-            if (arr.length() < 1) return;
-            for (int i = 0; i < arr.length(); i++) {
-                try {
-                    JSONObject json = arr.getJSONObject(i);
-                    // print only for the given day
-                    if (isSameDay(json.getString("weekdays"))) {
-                        printCourse(json.getString("start_time"), json.getString("end_time")
-                                , json.getString("subject") + " " + json.getString("catalog_number"));
-                    }
-                } catch (JSONException e) {
-                    e.printStackTrace();
+            /* get the metadata and decide if request was successful or not */
+            jsonData = new JSONObject(response);
+            jsonMeta = jsonData; // preserve this object for finding the array
+            jsonMeta = jsonMeta.getJSONObject("meta");
+            Toast.makeText(this, jsonMeta.getString("message"), Toast.LENGTH_SHORT).show();
+            if (! jsonMeta.getString("message").equals("Request successful")) return;
+
+            /* loop through courses and print data */
+            arr = new JSONArray(jsonData.getString("data"));
+            courses = new String [arr.length()];
+            for (int i = 0; i < arr.length(); i ++) {
+                jsonData = arr.getJSONObject(i);
+                if (isSameDay(jsonData.getString("weekdays")) && uniqueCourse(courses,
+                        jsonData.getString("start_time"), jsonData.getString("subject"),
+                        jsonData.getString("catalog_number"))) {
+                    printCourse(jsonData.getString("start_time"), jsonData.getString("end_time")
+                            , jsonData.getString("subject") + " " + jsonData.getString("catalog_number"));
                 }
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    private boolean uniqueCourse(String[] uniqueCourses, String start_time,
+                                 String subject, String catalog_number) {
+        String course = (String) TextUtils.concat(subject, catalog_number, start_time);
+        for(int i = 0; i < uniqueCourses.length;i++) {
+            if (uniqueCourses[i] == null) {
+                uniqueCourses[i] = course;
+                return true;
+            } else if (uniqueCourses[i].equals(course)) {
+                return false;
+            }
+        }
+        return false;
     }
 
     private boolean isSameDay(String weekdays) {
