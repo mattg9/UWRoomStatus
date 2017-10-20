@@ -10,7 +10,7 @@
 
     <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="495dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -25,6 +25,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="0dp"
                 android:orientation="horizontal"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp">
@@ -37,7 +38,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.03"
-                    android:text="@string/Building"
+                    android:text="Building:"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/buildingEditText"
@@ -85,6 +86,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:orientation="horizontal"
                 android:paddingLeft="4dp"
                 android:paddingRight="4dp">
@@ -159,13 +161,36 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/F"
-                        tools:layout_editor_absoluteX="265dp"
-                        tools:layout_editor_absoluteY="140dp" />
+                        android:text="@string/F" />
 
                 </RadioGroup>
 
             </LinearLayout>
+
+            <Button
+                android:id="@+id/button_TimePicker"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_margin="5dp"
+                android:layout_weight="0.2"
+                android:background="@android:color/darker_gray"
+                android:onClick="onTimePickerClicked"
+                android:paddingLeft="5dp"
+                android:paddingRight="5dp"
+                android:text="@string/time_picker"
+                android:visibility="gone"/>
+
+            <TimePicker
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/timepicker"
+                android:layout_marginEnd="8dp"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="8dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="11dp"
+                android:visibility="gone"/>
 
             <Button
                 android:id="@+id/submitButton"
@@ -177,6 +202,7 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="9dp"
                 android:layout_weight="0.03"
+                android:background="@color/colorSubmit"
                 android:text="@string/Submit"
                 android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -192,10 +218,11 @@
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="8dp"
-                android:layout_weight="0.03"
+                android:layout_weight="2.54"
                 android:padding="20dp"
                 android:text="@string/output"
-                android:textAlignment="center"
+                android:textAlignment="textStart"
+                android:layout_gravity="start"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

@@ -19,7 +19,10 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
+import android.widget.TimePicker;
 import android.widget.Toast;
+import java.util.ArrayList;
+import java.util.Collections;
 
 import app.band.runawaynation.matth.uwroomstatus.services.MyService;
 import app.band.runawaynation.matth.uwroomstatus.utils.NetworkHelper;
@@ -37,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
     private String room;
     private EditText buildingET, roomET;
     private TextView output;
+    private TimePicker tp;
     private String courses[];
+    private ArrayList<String> courseOutput = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
         buildingET = (EditText) findViewById(R.id.buildingEditText);
         roomET = (EditText) findViewById(R.id.roomEditText);
         output = (TextView) findViewById(R.id.tvOutput);
+        tp = (TimePicker) findViewById(R.id.timepicker);
         Button submit = (Button) findViewById(R.id.submitButton);
 
         // register the broadcast manager for my service
@@ -88,6 +94,7 @@ public class MainActivity extends AppCompatActivity {
     // what happens when I click submit button
     private void onSubmitClicked() {
         output.setText(""); // clear the output log to screen
+        courseOutput.clear(); // clear the output in backend
         building = buildingET.getText().toString();
         room = roomET.getText().toString();
         if (building.isEmpty() || room.isEmpty() || day.isEmpty()) {
@@ -118,8 +125,23 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void printCourse(String startTime, String endTime, String courseName) {
-        output.append(courseName + " " + startTime + "-" + endTime + "\n");
+    public void onTimePickerClicked(View view) {
+        if(tp.getVisibility() == View.GONE) {
+            tp.setVisibility(View.VISIBLE);
+        } else {
+            tp.setVisibility(View.GONE);
+        }
+    }
+
+    private void addCourse(String startTime, String endTime, String courseName) {
+        courseOutput.add(startTime + "-" + endTime + "\t\t\t" + courseName);
+    }
+
+    private void printCourses(){
+        Collections.sort(courseOutput);
+        for (String item : courseOutput) {
+            output.append(item + "\n");
+        }
     }
 
     private void processCourseData(String response) {
@@ -141,10 +163,11 @@ public class MainActivity extends AppCompatActivity {
                 if (isSameDay(jsonData.getString("weekdays")) && uniqueCourse(courses,
                         jsonData.getString("start_time"), jsonData.getString("subject"),
                         jsonData.getString("catalog_number"))) {
-                    printCourse(jsonData.getString("start_time"), jsonData.getString("end_time")
+                    addCourse(jsonData.getString("start_time"), jsonData.getString("end_time")
                             , jsonData.getString("subject") + " " + jsonData.getString("catalog_number"));
                 }
             }
+            printCourses();
         } catch (JSONException e) {
             e.printStackTrace();
         }

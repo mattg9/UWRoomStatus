@@ -1,17 +1,18 @@
 <resources>
     <string name="app_name">UW Room Status</string>
-    <string name="Building">Building</string>
-    <string name="Day">Day</string>
+    <string name="Building">Building:</string>
+    <string name="Day">Day:</string>
     <string name="F">F</string>
     <string name="M">M</string>
-    <string name="Room">Room</string>
+    <string name="Room">Room:</string>
     <string name="RoomHint">number</string>
     <string name="Submit">Submit</string>
     <string name="T">T</string>
     <string name="Th">Th</string>
     <string name="W">W</string>
-    <string name="buildingHint">name</string>
+    <string name="buildingHint">abbr.</string>
     <string name="output">Room Status Will Display Here</string>
     <string name="invalid_input">Invalid Input</string>
+    <string name="time_picker">Time Picker</string>
 
 </resources>
