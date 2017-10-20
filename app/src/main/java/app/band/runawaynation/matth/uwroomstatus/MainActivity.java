@@ -41,8 +41,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText buildingET, roomET;
     private TextView output;
     private TimePicker tp;
-    private String courses[];
-    private ArrayList<String> courseOutput = new ArrayList<>();
+    private final ArrayList<String> courseOutput = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -125,7 +124,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    public void onTimePickerClicked(View view) {
+    public void onTimePickerClicked() {
         if(tp.getVisibility() == View.GONE) {
             tp.setVisibility(View.VISIBLE);
         } else {
@@ -157,7 +156,7 @@ public class MainActivity extends AppCompatActivity {
 
             /* loop through courses and print data */
             arr = new JSONArray(jsonData.getString("data"));
-            courses = new String [arr.length()];
+            String[] courses = new String[arr.length()];
             for (int i = 0; i < arr.length(); i ++) {
                 jsonData = arr.getJSONObject(i);
                 if (isSameDay(jsonData.getString("weekdays")) && uniqueCourse(courses,

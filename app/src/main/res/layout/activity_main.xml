@@ -9,7 +9,7 @@
     tools:layout_editor_absoluteY="81dp">
 
     <ScrollView
-        android:layout_width="match_parent"
+        android:layout_width="368dp"
         android:layout_height="495dp"
         android:layout_marginLeft="8dp"
         android:layout_marginStart="8dp"
@@ -38,7 +38,7 @@
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.03"
-                    android:text="Building:"
+                    android:text="@string/Building"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/buildingEditText"
