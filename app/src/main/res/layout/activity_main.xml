@@ -9,12 +9,14 @@
     tools:layout_editor_absoluteY="81dp">
 
     <ScrollView
-        android:layout_width="368dp"
+        android:layout_width="0dp"
         android:layout_height="495dp"
-        android:layout_marginLeft="8dp"
+        android:layout_marginLeft="4dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <LinearLayout
@@ -39,6 +41,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.03"
                     android:text="@string/Building"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/buildingEditText"
@@ -52,6 +55,8 @@
                     android:layout_weight="0.03"
                     android:hint="@string/buildingHint"
                     android:inputType="textCapCharacters"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textColorLink="@color/colorPrimary"
                     app:layout_constraintLeft_toRightOf="@+id/buildingTextView"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
@@ -65,6 +70,7 @@
                     android:layout_marginTop="8dp"
                     android:layout_weight="0.03"
                     android:text="@string/Room"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_constraintLeft_toLeftOf="parent"
                     app:layout_constraintRight_toLeftOf="@+id/roomEditText"
@@ -78,6 +84,8 @@
                     android:layout_weight="0.03"
                     android:hint="@string/RoomHint"
                     android:inputType="number"
+                    android:textColorHint="@color/colorPrimary"
+                    android:textColorLink="@color/colorPrimary"
                     app:layout_constraintLeft_toRightOf="@+id/roomTextView"
                     app:layout_constraintRight_toRightOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/buildingEditText" />
@@ -102,6 +110,7 @@
                     android:layout_marginTop="11dp"
                     android:layout_weight="0.03"
                     android:text="@string/Day"
+                    android:textColor="@color/colorPrimaryDark"
                     android:textSize="20sp"
                     app:layout_constraintHorizontal_bias="0.975"
                     app:layout_constraintLeft_toLeftOf="parent"
@@ -127,7 +136,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/M" />
+                        android:text="@string/M"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary" />
 
                     <RadioButton
                         android:id="@+id/radio_Tuesday"
@@ -135,7 +146,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/T" />
+                        android:text="@string/T"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary" />
 
                     <RadioButton
                         android:id="@+id/radio_Wednesday"
@@ -144,6 +157,8 @@
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
                         android:text="@string/W"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary"
                         tools:layout_editor_absoluteX="188dp"
                         tools:layout_editor_absoluteY="112dp" />
 
@@ -153,7 +168,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/Th" />
+                        android:text="@string/Th"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary" />
 
                     <RadioButton
                         android:id="@+id/radio_Friday"
@@ -161,7 +178,9 @@
                         android:layout_height="wrap_content"
                         android:layout_weight="0.2"
                         android:onClick="onRadioButtonClicked"
-                        android:text="@string/F" />
+                        android:text="@string/F"
+                        android:textColorHint="@color/colorPrimary"
+                        android:textColorLink="@color/colorPrimary" />
 
                 </RadioGroup>
 
@@ -175,22 +194,21 @@
                 android:layout_margin="5dp"
                 android:layout_weight="0.2"
                 android:background="@android:color/darker_gray"
-                android:onClick="onTimePickerClicked"
                 android:paddingLeft="5dp"
                 android:paddingRight="5dp"
                 android:text="@string/time_picker"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <TimePicker
+                android:id="@+id/timepicker"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:id="@+id/timepicker"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="11dp"
-                android:visibility="gone"/>
+                android:visibility="gone" />
 
             <Button
                 android:id="@+id/submitButton"
@@ -202,8 +220,10 @@
                 android:layout_marginStart="8dp"
                 android:layout_marginTop="9dp"
                 android:layout_weight="0.03"
-                android:background="@color/colorSubmit"
+                android:background="@color/colorAccent"
                 android:text="@string/Submit"
+                android:textColor="@color/colorPrimaryDark"
+                android:textSize="18sp"
                 android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
@@ -213,6 +233,7 @@
                 android:id="@+id/tvOutput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_gravity="start"
                 android:layout_marginEnd="8dp"
                 android:layout_marginLeft="8dp"
                 android:layout_marginRight="8dp"
@@ -222,7 +243,6 @@
                 android:padding="20dp"
                 android:text="@string/output"
                 android:textAlignment="textStart"
-                android:layout_gravity="start"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintHorizontal_bias="0.0"

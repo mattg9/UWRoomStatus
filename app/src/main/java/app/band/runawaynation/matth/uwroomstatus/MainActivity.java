@@ -19,7 +19,6 @@ import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
 import android.support.v4.content.LocalBroadcastManager;
-import android.widget.TimePicker;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -36,11 +35,10 @@ public class MainActivity extends AppCompatActivity {
     private static final String ROOM = "ROOM";
     private boolean networkOk;
     private String building;
-    private String day;
+    private String day = "not specified";
     private String room;
     private EditText buildingET, roomET;
     private TextView output;
-    private TimePicker tp;
     private final ArrayList<String> courseOutput = new ArrayList<>();
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,7 +55,6 @@ public class MainActivity extends AppCompatActivity {
         buildingET = (EditText) findViewById(R.id.buildingEditText);
         roomET = (EditText) findViewById(R.id.roomEditText);
         output = (TextView) findViewById(R.id.tvOutput);
-        tp = (TimePicker) findViewById(R.id.timepicker);
         Button submit = (Button) findViewById(R.id.submitButton);
 
         // register the broadcast manager for my service
@@ -96,7 +93,7 @@ public class MainActivity extends AppCompatActivity {
         courseOutput.clear(); // clear the output in backend
         building = buildingET.getText().toString();
         room = roomET.getText().toString();
-        if (building.isEmpty() || room.isEmpty() || day.isEmpty()) {
+        if (building.isEmpty() || room.isEmpty() || day.equals("not specified")) {
             Toast.makeText(this, R.string.invalid_input, Toast.LENGTH_LONG).show();
             return;
         }
@@ -121,14 +118,6 @@ public class MainActivity extends AppCompatActivity {
             case R.id.radio_Wednesday: if (checked) { day = "W"; break; }
             case R.id.radio_Thursday: if (checked) { day = "Th"; break; }
             case R.id.radio_Friday: if (checked) { day = "F"; break; }
-        }
-    }
-
-    public void onTimePickerClicked() {
-        if(tp.getVisibility() == View.GONE) {
-            tp.setVisibility(View.VISIBLE);
-        } else {
-            tp.setVisibility(View.GONE);
         }
     }
 
