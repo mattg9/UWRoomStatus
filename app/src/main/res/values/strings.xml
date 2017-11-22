@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UW Room Status</string>
+    <string name="app_name">UWaterloo Room Status</string>
     <string name="Building">Building:</string>
     <string name="Day">Day:</string>
     <string name="F">F</string>
