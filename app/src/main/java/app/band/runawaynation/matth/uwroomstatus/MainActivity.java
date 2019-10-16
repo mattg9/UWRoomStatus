@@ -1,7 +1,9 @@
 package app.band.runawaynation.matth.uwroomstatus;
 
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.AppCompatActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
@@ -18,7 +20,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.net.Uri;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -52,10 +54,10 @@ public class MainActivity extends AppCompatActivity {
         }
         
         // assign view objects to corresponding declared variables
-        buildingET = (EditText) findViewById(R.id.buildingEditText);
-        roomET = (EditText) findViewById(R.id.roomEditText);
-        output = (TextView) findViewById(R.id.tvOutput);
-        Button submit = (Button) findViewById(R.id.submitButton);
+        buildingET = findViewById(R.id.buildingEditText);
+        roomET = findViewById(R.id.roomEditText);
+        output = findViewById(R.id.tvOutput);
+        Button submit = findViewById(R.id.submitButton);
 
         // register the broadcast manager for my service
         LocalBroadcastManager.getInstance(getApplicationContext())
@@ -80,7 +82,7 @@ public class MainActivity extends AppCompatActivity {
                 .unregisterReceiver(mBroadcastReceiver);
     }
 
-    protected void onSaveInstanceState(Bundle outState) {
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);
         outState.putString(BUILDING, building);
         outState.putString(ROOM, room);

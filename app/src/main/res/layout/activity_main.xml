@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -59,7 +59,9 @@
                     android:textColorLink="@color/colorPrimary"
                     app:layout_constraintLeft_toRightOf="@+id/buildingTextView"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
 
                 <TextView
                     android:id="@+id/roomTextView"
@@ -88,7 +90,9 @@
                     android:textColorLink="@color/colorPrimary"
                     app:layout_constraintLeft_toRightOf="@+id/roomTextView"
                     app:layout_constraintRight_toRightOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/buildingEditText" />
+                    app:layout_constraintTop_toBottomOf="@+id/buildingEditText"
+                    android:autofillHints=""
+                    tools:targetApi="o" />
             </LinearLayout>
 
             <LinearLayout
@@ -227,7 +231,7 @@
                 android:visibility="visible"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/RoomTimePicker" />
+                app:layout_constraintTop_toBottomOf="@+id/timepicker" />
 
             <TextView
                 android:id="@+id/tvOutput"
@@ -253,4 +257,4 @@
         </LinearLayout>
     </ScrollView>
 
-</android.support.constraint.ConstraintLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

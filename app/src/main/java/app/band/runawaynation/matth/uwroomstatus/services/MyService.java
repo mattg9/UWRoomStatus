@@ -3,7 +3,7 @@ package app.band.runawaynation.matth.uwroomstatus.services;
 import android.app.IntentService;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.content.LocalBroadcastManager;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import app.band.runawaynation.matth.uwroomstatus.utils.HttpHelper;
 
@@ -24,6 +24,7 @@ public class MyService extends IntentService {
 
         String response;
         try {
+            assert uri != null;
             response = HttpHelper.downloadUrl(uri.toString());
         } catch (IOException e) {
             e.printStackTrace();

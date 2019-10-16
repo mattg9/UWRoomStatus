@@ -11,6 +11,7 @@ public class NetworkHelper {
         ConnectivityManager cm = (ConnectivityManager)
                 context.getSystemService(Context.CONNECTIVITY_SERVICE);
         try {
+            assert cm != null;
             NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
             return activeNetwork != null &&
                     activeNetwork.isConnectedOrConnecting();
